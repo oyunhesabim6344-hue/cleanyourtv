@@ -818,7 +818,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         btnWifi.setOnClickListener(v -> openNetworkPill());
         btnVpn.setOnClickListener(v -> openVpnPill());
         btnWifi.setOnLongClickListener(v -> {
-            open(systemIntent(Settings.ACTION_WIFI_SETTINGS));
+            open(new Intent("android.settings.panel.action.WIFI"));
             return true;
         });
         launcherSettingsButton = cfg.launcherSettingsButton;
@@ -3122,7 +3122,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      */
     private void openNetworkPill() {
         Intent i = vpnPill ? null : vpnAppIntent();
-        open(i != null ? i : systemIntent(Settings.ACTION_WIFI_SETTINGS));
+        open(i != null ? i : new Intent("android.settings.panel.action.WIFI"));
     }
 
     /** vpn_app's launch intent, or null when none is set or it is not installed. */
